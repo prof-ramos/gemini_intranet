@@ -4,13 +4,13 @@ This file provides guidance for AI assistants (Claude and others) working on thi
 
 ## Project Overview
 
-**gemini_intranet** is a Gemini-powered intranet application bootstrapped via [Google AI Studio](https://aistudio.google.com/apps). The repository is in its initial state — no application code has been added yet beyond the placeholder README.
-
-> When code is added, update this file to reflect the actual tech stack, structure, and conventions.
+**gemini_intranet** is a Gemini-powered intranet application bootstrapped via [Google AI Studio](https://aistudio.google.com/apps).
 
 ## Current State
 
-- **Status**: Early initialization — only `README.md` exists
+- **Status**: Active development
+- **Stack**: Node.js + Express (backend), plain HTML/CSS (frontend)
+- **E2E tests**: Playwright (Chromium + Firefox)
 - **Origin**: Google AI Studio app template ("Built with AI Studio")
 - **Branch model**: Feature branches prefixed `claude/` for AI-assisted work
 
@@ -18,20 +18,19 @@ This file provides guidance for AI assistants (Claude and others) working on thi
 
 ```
 gemini_intranet/
-├── README.md        # Project banner and intro (AI Studio template)
-└── CLAUDE.md        # This file
-```
-
-When the project grows, expected additions include:
-
-```
-gemini_intranet/
-├── src/             # Application source code
-├── tests/           # Test files
-├── docs/            # Additional documentation
-├── .env.example     # Environment variable template
-├── package.json     # (if Node/JS) or pyproject.toml / requirements.txt (if Python)
-└── ...
+├── src/
+│   ├── server.js        # Express server (entry point)
+│   └── public/
+│       └── index.html   # Intranet home page
+├── tests/
+│   └── e2e/
+│       └── home.spec.js # Playwright E2E tests
+├── .env.example         # Environment variable template
+├── .gitignore
+├── package.json
+├── playwright.config.js # Playwright configuration
+├── README.md
+└── CLAUDE.md            # This file
 ```
 
 ## Git Conventions
@@ -60,21 +59,16 @@ Update README with setup instructions
 
 ## Development Setup
 
-> This section should be updated once the tech stack is finalized.
-
-Until then, the general steps will be:
-
 1. Clone the repository
 2. Copy `.env.example` to `.env` and fill in required values
-3. Install dependencies (e.g., `npm install` or `pip install -r requirements.txt`)
-4. Run the development server
+3. `npm install`
+4. `npm run dev` — starts server with `--watch` at http://localhost:3000
 
 ## Environment Variables
 
-No environment variables are defined yet. When integrating with Gemini APIs, expect:
-
 | Variable | Description |
 |---|---|
+| `PORT` | HTTP port (default: `3000`) |
 | `GEMINI_API_KEY` | Google Gemini API key from AI Studio |
 | `PROJECT_ID` | Google Cloud project ID (if using Vertex AI) |
 
@@ -91,20 +85,20 @@ This project was bootstrapped via AI Studio. Key points:
 
 ## Testing
 
-> Update this section once a test framework is chosen.
+E2E tests use **Playwright** against the live Express server.
 
-Run tests with the appropriate command for your stack:
+```bash
+npm run test:e2e          # run all tests (headless)
+npm run test:e2e:ui       # interactive UI mode
+npm run test:e2e:report   # open last HTML report
+```
 
-- **JavaScript/TypeScript**: `npm test` or `npx jest`
-- **Python**: `pytest` or `python -m pytest`
-
+Playwright auto-starts the server via `webServer` in `playwright.config.js`.
 All tests must pass before merging to `main`.
 
 ## Code Style
 
-> Enforce with a linter/formatter once the stack is finalized.
-
-General guidelines until then:
+General guidelines:
 
 - Keep functions small and single-purpose
 - Use descriptive variable and function names

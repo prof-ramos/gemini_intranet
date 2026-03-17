@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Intranet</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f0f4f8;
+      color: #1a202c;
+      min-height: 100vh;
+    }
+    header {
+      background: #1a73e8;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 600; }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .welcome {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .welcome h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .welcome p { color: #4a5568; line-height: 1.6; }
+    .status-badge {
+      display: inline-block;
+      background: #e6f4ea;
+      color: #137333;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/>
+      <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z" fill="white"/>
+    </svg>
+    <h1>Gemini Intranet</h1>
+  </header>
+  <main>
+    <section class="welcome" role="main">
+      <h2>Welcome to Gemini Intranet</h2>
+      <p>Your AI-powered internal knowledge hub. Powered by Google Gemini.</p>
+      <span class="status-badge" data-testid="status-badge">System Online</span>
+    </section>
+  </main>
+</body>
+</html>
